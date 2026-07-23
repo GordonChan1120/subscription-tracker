@@ -6,7 +6,6 @@ import {
   CATEGORIES,
   BILLING_CYCLES,
   type BillingCycle,
-  type SubscriptionStatus,
   type Subscription,
 } from "../../types/subscription";
 
@@ -33,9 +32,6 @@ export function SubscriptionForm({
     initial?.nextPaymentDate ?? ""
   );
   const [category, setCategory] = useState(initial?.category ?? CATEGORIES[0]);
-  const [status, setStatus] = useState<SubscriptionStatus>(
-    initial?.status ?? "active"
-  );
   const [notes, setNotes] = useState(initial?.notes ?? "");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -63,7 +59,6 @@ export function SubscriptionForm({
       startDate,
       nextPaymentDate,
       category,
-      status,
       notes: notes.trim() || undefined,
     });
   }
@@ -110,24 +105,12 @@ export function SubscriptionForm({
         <Input label="Next Payment Date" type="date" value={nextPaymentDate} onChange={(e) => setNextPaymentDate(e.target.value)} error={errors.nextPaymentDate} />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <Select
-          label="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          options={CATEGORIES.map((c) => ({ value: c, label: c }))}
-        />
-        <Select
-          label="Status"
-          value={status}
-          onChange={(e) => setStatus(e.target.value as SubscriptionStatus)}
-          options={[
-            { value: "active", label: "Active" },
-            { value: "paused", label: "Paused" },
-            { value: "cancelled", label: "Cancelled" },
-          ]}
-        />
-      </div>
+      <Select
+        label="Category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        options={CATEGORIES.map((c) => ({ value: c, label: c }))}
+      />
 
       <Input label="Notes" value={notes} onChange={(e) => setNotes(e.target.value)} />
 

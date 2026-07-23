@@ -6,9 +6,7 @@ import { UpcomingPayments } from "./UpcomingPayments";
 export function Dashboard() {
   const { subscriptions } = useSubscriptions();
 
-  const activeSubs = subscriptions.filter((s) => s.status === "active");
-
-  const monthlyTotal = activeSubs.reduce((sum, sub) => {
+  const monthlyTotal = subscriptions.reduce((sum, sub) => {
     switch (sub.billingCycle) {
       case "yearly":
         return sum + sub.price / 12;
@@ -21,7 +19,7 @@ export function Dashboard() {
     }
   }, 0);
 
-  const nextPayment = activeSubs
+  const nextPayment = subscriptions
     .slice()
     .sort(
       (a, b) =>
@@ -38,13 +36,12 @@ export function Dashboard() {
           icon={<DollarSign size={24} />}
           label="Monthly Spend"
           value={`$${monthlyTotal.toFixed(2)}`}
-          subtext={`From ${activeSubs.length} active subscriptions`}
+          subtext={`From ${subscriptions.length} subscriptions`}
         />
         <StatsCard
           icon={<CreditCard size={24} />}
-          label="Active Subscriptions"
-          value={String(activeSubs.length)}
-          subtext={`${subscriptions.length - activeSubs.length} inactive`}
+          label="Subscriptions"
+          value={String(subscriptions.length)}
         />
         <StatsCard
           icon={<CalendarClock size={24} />}
@@ -57,7 +54,7 @@ export function Dashboard() {
                 )
               : "---"
           }
-          subtext={nextPayment ? nextPayment.name : "No active subscriptions"}
+          subtext={nextPayment ? nextPayment.name : "No subscriptions"}
         />
       </div>
 

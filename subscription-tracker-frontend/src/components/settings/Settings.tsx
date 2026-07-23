@@ -20,7 +20,7 @@ function exportJson(subscriptions: Subscription[]) {
 }
 
 function exportCsv(subscriptions: Subscription[]) {
-  const headers = ["Name", "Service", "Price", "Currency", "Billing Cycle", "Category", "Status", "Next Payment", "Start Date", "Notes"];
+  const headers = ["Name", "Service", "Price", "Currency", "Billing Cycle", "Category", "Next Payment", "Start Date", "Notes"];
   const rows = subscriptions.map((s) =>
     [
       s.name,
@@ -29,7 +29,6 @@ function exportCsv(subscriptions: Subscription[]) {
       s.currency,
       s.billingCycle,
       s.category,
-      s.status,
       s.nextPaymentDate,
       s.startDate,
       s.notes ?? "",

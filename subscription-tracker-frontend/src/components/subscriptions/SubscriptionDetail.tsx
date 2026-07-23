@@ -12,12 +12,6 @@ interface SubscriptionDetailProps {
   onDelete: (id: string) => void;
 }
 
-const statusVariant: Record<string, "success" | "warning" | "danger"> = {
-  active: "success",
-  paused: "warning",
-  cancelled: "danger",
-};
-
 export function SubscriptionDetail({
   subscription: sub,
   onClose,
@@ -58,12 +52,6 @@ export function SubscriptionDetail({
                 /{sub.billingCycle}
               </span>
             </p>
-          </div>
-          <div>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Status</p>
-            <Badge variant={statusVariant[sub.status]} className="mt-1">
-              {sub.status}
-            </Badge>
           </div>
           <div>
             <p className="text-xs text-gray-500 dark:text-gray-400">Category</p>

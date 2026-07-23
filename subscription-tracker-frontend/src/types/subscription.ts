@@ -1,5 +1,4 @@
 export type BillingCycle = 'weekly' | 'monthly' | 'quarterly' | 'yearly'
-export type SubscriptionStatus = 'active' | 'paused' | 'cancelled'
 
 export interface Subscription {
   id: string
@@ -12,7 +11,6 @@ export interface Subscription {
   startDate: string
   nextPaymentDate: string
   category: string
-  status: SubscriptionStatus
   notes?: string
 }
 

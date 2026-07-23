@@ -19,7 +19,6 @@ export function UpcomingPayments({ subscriptions }: UpcomingPaymentsProps) {
   }, []);
 
   const upcoming = subscriptions
-    .filter((s) => s.status === "active")
     .sort(
       (a, b) =>
         new Date(a.nextPaymentDate).getTime() -
@@ -36,7 +35,7 @@ export function UpcomingPayments({ subscriptions }: UpcomingPaymentsProps) {
         <EmptyState
           icon={<CreditCard size={40} />}
           title="No upcoming payments"
-          description="All your active subscriptions are paid up."
+          description="All your subscriptions are paid up."
         />
       </Card>
     );

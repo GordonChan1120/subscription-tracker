@@ -7,25 +7,28 @@ import { SubscriptionCard } from "./SubscriptionCard";
 import { SubscriptionDetail } from "./SubscriptionDetail";
 import { EmptyState } from "../ui/EmptyState";
 import { CATEGORIES } from "../../types/subscription";
-import type { SubscriptionStatus } from "../../types/subscription";
 
 export function SubscriptionsPage() {
   const navigate = useNavigate();
   const { subscriptions, deleteSubscription } = useSubscriptions();
   const [search, setSearch] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
-  const [statusFilter, setStatusFilter] = useState<"all" | SubscriptionStatus>("all");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const filtered = subscriptions.filter((s) => {
-    const matchSearch =
-      !search ||
-      s.name.toLowerCase().includes(search.toLowerCase()) ||
-      s.service.toLowerCase().includes(search.toLowerCase());
-    const matchCategory = categoryFilter === "all" || s.category === categoryFilter;
-    const matchStatus = statusFilter === "all" || s.status === statusFilter;
-    return matchSearch && matchCategory && matchStatus;
-  });
+  const filtered = subscriptions
+    .filter((s) => {
+      const matchSearch =
+        !search ||
+        s.name.toLowerCase().includes(search.toLowerCase()) ||
+        s.service.toLowerCase().includes(search.toLowerCase());
+      const matchCategory = categoryFilter === "all" || s.category === categoryFilter;
+      return matchSearch && matchCategory;
+    })
+    .sort(
+      (a, b) =>
+        new Date(a.nextPaymentDate).getTime() -
+        new Date(b.nextPaymentDate).getTime()
+    );
 
   const selectedSub = selectedId
     ? subscriptions.find((s) => s.id === selectedId)
@@ -67,25 +70,13 @@ export function SubscriptionsPage() {
             </option>
           ))}
         </select>
-        <select
-          value={statusFilter}
-          onChange={(e) =>
-            setStatusFilter(e.target.value as "all" | SubscriptionStatus)
-          }
-          className="rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-        >
-          <option value="all">All Status</option>
-          <option value="active">Active</option>
-          <option value="paused">Paused</option>
-          <option value="cancelled">Cancelled</option>
-        </select>
       </div>
 
       {filtered.length === 0 ? (
         <EmptyState
           title="No subscriptions found"
           description={
-            search || categoryFilter !== "all" || statusFilter !== "all"
+            search || categoryFilter !== "all"
               ? "Try adjusting your filters."
               : "Add your first subscription to get started."
           }

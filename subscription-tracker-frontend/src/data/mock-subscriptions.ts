@@ -11,7 +11,6 @@ export const mockSubscriptions: Subscription[] = [
     startDate: '2024-01-15',
     nextPaymentDate: '2026-08-15',
     category: 'Streaming',
-    status: 'active',
   },
   {
     id: '2',
@@ -23,7 +22,6 @@ export const mockSubscriptions: Subscription[] = [
     startDate: '2024-03-01',
     nextPaymentDate: '2026-07-28',
     category: 'Music',
-    status: 'active',
   },
   {
     id: '3',
@@ -35,7 +33,6 @@ export const mockSubscriptions: Subscription[] = [
     startDate: '2024-06-10',
     nextPaymentDate: '2026-08-10',
     category: 'Streaming',
-    status: 'active',
   },
   {
     id: '4',
@@ -47,7 +44,6 @@ export const mockSubscriptions: Subscription[] = [
     startDate: '2024-02-20',
     nextPaymentDate: '2026-07-25',
     category: 'Cloud Storage',
-    status: 'active',
   },
   {
     id: '5',
@@ -59,7 +55,6 @@ export const mockSubscriptions: Subscription[] = [
     startDate: '2025-01-01',
     nextPaymentDate: '2027-01-01',
     category: 'Design',
-    status: 'active',
   },
   {
     id: '6',
@@ -71,7 +66,6 @@ export const mockSubscriptions: Subscription[] = [
     startDate: '2024-08-15',
     nextPaymentDate: '2026-08-15',
     category: 'Development',
-    status: 'active',
   },
   {
     id: '7',
@@ -83,7 +77,6 @@ export const mockSubscriptions: Subscription[] = [
     startDate: '2024-04-01',
     nextPaymentDate: '2026-07-01',
     category: 'Productivity',
-    status: 'paused',
   },
   {
     id: '8',
@@ -95,6 +88,5 @@ export const mockSubscriptions: Subscription[] = [
     startDate: '2025-12-01',
     nextPaymentDate: '2026-12-01',
     category: 'Streaming',
-    status: 'cancelled',
   },
 ]

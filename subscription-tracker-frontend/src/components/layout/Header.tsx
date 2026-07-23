@@ -13,7 +13,6 @@ export function Header() {
   const now = new Date();
 
   const upcoming = subscriptions
-    .filter((s) => s.status === "active")
     .map((s) => ({
       ...s,
       daysLeft: differenceInDays(parseISO(s.nextPaymentDate), now),

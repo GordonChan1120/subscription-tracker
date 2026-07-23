@@ -10,12 +10,6 @@ interface SubscriptionCardProps {
   onDelete: (id: string) => void;
 }
 
-const statusVariant: Record<string, "success" | "warning" | "danger"> = {
-  active: "success",
-  paused: "warning",
-  cancelled: "danger",
-};
-
 export function SubscriptionCard({
   subscription: sub,
   onEdit,
@@ -86,7 +80,6 @@ export function SubscriptionCard({
 
       <div className="mt-3 flex items-center gap-2">
         <Badge>{sub.category}</Badge>
-        <Badge variant={statusVariant[sub.status]}>{sub.status}</Badge>
       </div>
     </Card>
   );
