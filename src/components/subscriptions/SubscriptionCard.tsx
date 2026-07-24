@@ -34,9 +34,6 @@ export function SubscriptionCard({
     <Card className="p-4 transition-shadow hover:shadow-md">
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/40 text-sm font-bold text-indigo-600 dark:text-indigo-300 uppercase">
-            {sub.service.slice(0, 2)}
-          </div>
           <div>
             <p className="font-medium text-gray-900 dark:text-gray-100">{sub.name}</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">{sub.service}</p>

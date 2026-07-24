@@ -71,9 +71,6 @@ export function UpcomingPayments({ subscriptions }: UpcomingPaymentsProps) {
               className="flex items-center justify-between rounded-lg border border-gray-100 dark:border-gray-800 px-4 py-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-bold uppercase">
-                  {sub.service.slice(0, 2)}
-                </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{sub.name}</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">{formattedDate}</p>
